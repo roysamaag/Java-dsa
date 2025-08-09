@@ -8,9 +8,13 @@ public class TwoPointers {
         //int[] nums = {1,4,5,7,13};
         //System.out.print(TwoSumSorted(nums, 123));
 
-        int[] arr1 = {1,3,5,7,9};
-        int[] arr2 = {2,4,6,8,10};
-        MergeTwoSortedArrays(arr1,arr2);
+        // int[] arr1 = {1,3,5,7,9};
+        // int[] arr2 = {2,4,6,8,10};
+        // MergeTwoSortedArrays(arr1,arr2);
+
+        //IsSubsequence("ace","abcde");
+        ReverseString();
+
 
     }
 
@@ -99,5 +103,43 @@ public class TwoPointers {
         }
     }
 
+    public static void IsSubsequence(String s, String t)
+    {
+        int i = 0;
+        int j = 0;
 
+        while (i < s.length() && j < t.length()){
+            if (s.charAt(i) == t.charAt(j))
+            {
+                i++;
+            }
+            j++;
+        }
+        System.out.println(i == s.length());
+    }
+
+    public static void ReverseString()
+    {
+        String[] myStrArr = {"h", "a", "n", "n","a","h"};
+
+        int left = 0;
+        int right = myStrArr.length - 1;
+
+        while (left < right)
+        {
+            String temp = myStrArr[left];
+            myStrArr[left] = myStrArr[right];
+            myStrArr[right] = temp;
+            left++;
+            right--;
+        }
+
+        for (String string : myStrArr) {
+            System.out.print(string);
+        }
+
+
+
+
+    }
 }
