@@ -13,8 +13,10 @@ public class TwoPointers {
         // MergeTwoSortedArrays(arr1,arr2);
 
         //IsSubsequence("ace","abcde");
-        ReverseString();
+        //ReverseString();
 
+        int[] arr = {4,0,1,3,10};
+        SortedSquares(arr);
 
     }
 
@@ -103,6 +105,8 @@ public class TwoPointers {
         }
     }
 
+    // Given two strings s and t, return true if s is a subsequence of t,
+    // or false otherwise.
     public static void IsSubsequence(String s, String t)
     {
         int i = 0;
@@ -139,6 +143,38 @@ public class TwoPointers {
         }
 
 
+
+
+    }
+
+    // Given an integer array nums sorted in 
+    // non-decreasing order, return an array 
+    // of the squares of each number sorted in non-decreasing order.
+    // Squaring each element and sorting the new array
+    // is very trivial, could you
+    // find an O(n) solution using a different approach?
+    public static void SortedSquares(int[] nums){
+        int n = nums.length;
+        int[] ans = new int[n];
+        int left = 0;
+        int right = n - 1;
+
+        for (int i = n - 1; i >= 0; i--){
+            if (Math.abs(nums[left]) < Math.abs(nums[right])){
+               ans[i] = nums[right];
+               right--;
+            }
+            else{
+                ans[i] = nums[left];
+                left++;
+            }
+            ans[i] = ans[i] * ans[i];
+        }
+
+        // Print array 
+        for (int i = 0; i < ans.length ; i++){
+            System.out.println(ans[i]);
+        }
 
 
     }
