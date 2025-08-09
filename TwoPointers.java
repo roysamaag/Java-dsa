@@ -1,9 +1,17 @@
-public class Palindrome {
+import java.util.ArrayList;
+import java.util.List;
+
+public class TwoPointers {
     public static void main(String[] args){
-        System.out.print(IsPalindrome("able was i ere I saw elba"));
+        //System.out.print(IsPalindrome("able was i ere I saw elba"));
  
         //int[] nums = {1,4,5,7,13};
         //System.out.print(TwoSumSorted(nums, 123));
+
+        int[] arr1 = {1,3,5,7,9};
+        int[] arr2 = {2,4,6,8,10};
+        MergeTwoSortedArrays(arr1,arr2);
+
     }
 
     public static boolean IsPalindrome(String s){
@@ -51,6 +59,44 @@ public class Palindrome {
         }
 
         return false;
+    }
+
+    public static void MergeTwoSortedArrays(int[] arr1, int[] arr2)
+    {
+        List<Integer> ans = new ArrayList<>();
+        int i = 0;
+        int j = 0;
+
+        while (i < arr1.length && j < arr2.length)
+        {
+            if (arr1[i] < arr2[j])
+            {
+               ans.add(arr1[i]);     
+               i++;
+            }
+            else
+            {
+                ans.add(arr2[j]); 
+                j++;    
+            }
+        }
+
+        // Add the remaing items from the bigger array
+        while (i < arr1.length)
+        {
+            ans.add(arr1[i]);
+            i++;
+        }
+        while (j < arr2.length)
+        {
+            ans.add(arr2[j]);
+            j++;
+        }
+
+        for (Integer item : ans) {
+            System.out.println(ans.get(item-1));
+
+        }
     }
 
 
