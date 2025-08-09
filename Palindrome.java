@@ -1,9 +1,9 @@
 public class Palindrome {
     public static void main(String[] args){
-        // System.out.print(IsPalindrome("racecar"));
-
-        int[] nums = {1,4,5,7,13};
-        System.out.print(TwoSumSorted(nums, 123));
+        System.out.print(IsPalindrome("able was i ere I saw elba"));
+ 
+        //int[] nums = {1,4,5,7,13};
+        //System.out.print(TwoSumSorted(nums, 123));
     }
 
     public static boolean IsPalindrome(String s){
@@ -11,6 +11,17 @@ public class Palindrome {
         int last = s.length()-1;
 
         while (first < last){
+            if (s.charAt(first) == ' ')
+            {
+               first += 1;
+               break;
+            }
+            if (s.charAt(last) == ' ')
+            {
+               first -= 1;     
+               break;
+            }
+
             if (s.charAt(first) != s.charAt(last)){
                 return false;
             }
