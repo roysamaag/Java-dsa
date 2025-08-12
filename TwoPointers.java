@@ -19,8 +19,12 @@ public class TwoPointers {
         //SortedSquares(arr);
         //LongestSubarray(nums, 8);
 
-        int[] nums = {1,12,-5,-6,50,3};
-        FindMaxAverageSubArray(nums, 4);
+        // int[] nums = {1,12,-5,-6,50,3};
+        // FindMaxAverageSubArray(nums, 4);
+        
+        int[] nums = {0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1};
+
+        MaxConsecutiveOnes(nums, 3);
 
 
 
@@ -244,7 +248,28 @@ public class TwoPointers {
     // Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
     // Output: 6
     // Explanation: [1,1,1,0,0,1,1,1,1,1,1]
-    
+    public static void MaxConsecutiveOnes(int[] nums, int k){
+        int left = 0;
+        int occur = 0;
+        int ans = 0;
+
+        for (int right = 0; right < nums.length; right++){
+            if (nums[right] == 0){
+                occur++;
+            }
+            while (occur > k){
+                if (nums[left] == 0){
+                    occur--;
+                }
+                left++;
+            }
+            ans = Math.max(ans, right - left + 1);
+        }
+        System.out.println(ans);
+
+    }
+
+
 
 
 }
