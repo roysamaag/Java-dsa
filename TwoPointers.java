@@ -238,8 +238,4 @@ public class TwoPointers {
         System.out.println(ans);
 
     }
-
-    
-
-
 }
