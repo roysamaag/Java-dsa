@@ -18,7 +18,7 @@ public class TwoPointers {
         //int[] nums = {3, 1, 2, 7, 4, 2, 1, 1, 5};
         //SortedSquares(arr);
         //LongestSubarray(nums, 8);
-        
+
         int[] nums = {1,12,-5,-6,50,3};
         FindMaxAverageSubArray(nums, 4);
 
@@ -239,6 +239,7 @@ public class TwoPointers {
 
     }
 
+    
 
 
 }
