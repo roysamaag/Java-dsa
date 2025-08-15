@@ -30,7 +30,10 @@ public class Hash
     // System.out.println(pair[0]);
     // System.out.println(pair[1]);
 
-        System.out.println(FirstCharacterToAppearTwice1("abc1defy21"));
+        //System.out.println(FirstCharacterToAppearTwice1("abc1defy21"));
+        //System.out.println(CheckIfSentenceIsPangram("thequickbrrownfoxjumpsovethelazydog"));
+        int[] nums = {1,1,3,3,5,5,7,7};
+        System.out.println(countElements(nums));
 
     }
 
@@ -114,7 +117,6 @@ public class Hash
     }
 
     public static char FirstCharacterToAppearTwice1(String s){
-
         // Create Set
         Set<Character> set = new HashSet<>();
         
@@ -129,5 +131,34 @@ public class Hash
         }
 
         return ' ';
+    }
+
+    public static boolean CheckIfSentenceIsPangram(String s){
+        // Create a Set and add each character
+        Set<Character> seen = new HashSet<>();
+
+        for (char c : s.toCharArray()){
+            seen.add(c);
+        }
+        // return Set size == 26
+        return seen.size() == 26;
+    }
+
+    public static int countElements(int[] arr){
+
+        Set<Integer> set = new HashSet<>();
+        
+        int count = 0;
+        
+        for (int i = 0; i < arr.length; i++){
+            set.add(arr[i]);
+        }
+
+        for (int i = 0; i < arr.length; i++){
+            if (set.contains(arr[i] + 1))
+                count++;
+        }
+
+        return count;
     }
 }
