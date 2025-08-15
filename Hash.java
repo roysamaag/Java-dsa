@@ -1,6 +1,8 @@
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Hash
 {
@@ -23,8 +25,13 @@ public class Hash
     //  for (int value: hashMap.values()){
     //     System.out.println(value);
     //  }
-    int[] nums = {5,2,7,10,3,9};
-    TwoSum(nums,8);
+    // int[] nums = {5,2,7,10,3,9};
+    // int[] pair = TwoSum2(nums,8);
+    // System.out.println(pair[0]);
+    // System.out.println(pair[1]);
+
+        System.out.println(FirstCharacterToAppearTwice1("abc1defy21"));
+
     }
 
     public static void TwoSum(int[] nums, int target){
@@ -36,7 +43,7 @@ public class Hash
                 int[] pair = new int[] {hashMap.get(complement), i };
 
                 System.out.println(pair[0] +" "+ pair[1]);
-                //return;
+                return;
             }
             hashMap.put(nums[i],i);
         }
@@ -47,4 +54,80 @@ public class Hash
 
     }
 
+    public static int[] TwoSum1(int[] nums, int target){
+        // hashMap
+        Map<Integer, Integer> hashMap = new HashMap<>();
+        
+        // for every number 
+        for (int i = 0; i < nums.length; i++){
+            // Get complement 
+            int complement = target - nums[i];
+            // Lookup in hashMap
+            if (hashMap.containsKey(complement)){
+                return new int[]{hashMap.get(complement), i};        
+            }
+
+            // If not in hashMap add the number
+            hashMap.put(nums[i], i );
+
+        }
+        return new int[]{-1, -1};
+
+    }
+
+    public static int[] TwoSum2(int[] nums, int target){
+
+        // Create hashMap
+        Map<Integer, Integer> hashMap = new HashMap<>();
+
+        // For every number in array add to hashMap if complement not present
+        for (int i = 0; i < nums.length; i++){
+            int complement = target - nums[i];
+            
+            // If present return the index of the complement and the current index
+            if (hashMap.containsKey(complement)){
+                return new int[] {hashMap.get(complement), i};
+            }
+            hashMap.put(nums[i], i);
+        }
+
+        return new int[] {-1, -1};
+    }
+
+    public static char FirstCharacterToAppearTwice(String s){
+
+        // Create a HashMap
+        Map<Character, Integer> hashMap = new HashMap<>();
+
+        // For every char add to HashMap
+
+        for (char c : s.toCharArray()){
+            if (hashMap.containsKey(c)){
+                return c;
+            }
+            hashMap.put(c,0);
+        }
+
+        // If present return the char since it occurs again
+
+        return ' ';
+    }
+
+    public static char FirstCharacterToAppearTwice1(String s){
+
+        // Create Set
+        Set<Character> set = new HashSet<>();
+        
+        // Add each char in Set if not present
+        for (int i = 0; i < s.length(); i++){
+            char letter = s.charAt(i);
+            // If present return char
+            if (set.contains(letter)){
+                return letter;
+            }
+            set.add(letter);
+        }
+
+        return ' ';
+    }
 }
