@@ -1,4 +1,5 @@
-public class PrefixSum{
+public class PrefixSum
+{
     
     public static void main(String[] args) {
         int[] nums = {1, 6, 3, 2, 7, 2};
@@ -17,6 +18,8 @@ public class PrefixSum{
         for (int i = 1; i < nums.length; i++){
             prefixes[i] = nums[i] + prefixes[i-1];
         }
+
+        
 
         for (int i = 0; i < prefixes.length; i++){
             System.out.println(prefixes[i]);
