@@ -1,6 +1,9 @@
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -32,8 +35,12 @@ public class Hash
 
         //System.out.println(FirstCharacterToAppearTwice1("abc1defy21"));
         //System.out.println(CheckIfSentenceIsPangram("thequickbrrownfoxjumpsovethelazydog"));
-        int[] nums = {1,1,3,3,5,5,7,7};
-        System.out.println(countElements(nums));
+        // int[] nums = {1,1,3,3,5,5,7,7};
+        // System.out.println(countElements(nums));
+        
+        int[][] nums = {{3,1,2,4,5},{1,2,3,4},{3,4,5,6}};
+
+        List<Integer> ans = Intersection(nums);
 
     }
 
@@ -160,5 +167,33 @@ public class Hash
         }
 
         return count;
+    }
+
+    //Intersection of Multiple Arrays
+    //nums = [[3,1,2,4,5],[1,2,3,4],[3,4,5,6]]
+    //output = [3,4]
+    public static List<Integer> Intersection(int[][] nums){
+
+        // For every sub array
+        // Add each number to a hashmap
+        // Return all the numbers in hashmap that matches the number of subarrays after sorting.
+        
+        Map<Integer,Integer> count = new HashMap<>();
+        for (int i = 0; i < nums.length; i++){
+            for (int num : nums[i]){
+                count.put(num, count.getOrDefault(num, 0) + 1);
+            }
+        }
+        List<Integer> ans = new ArrayList<>();
+
+        for (int num: count.keySet()){
+            if (count.get(num) == nums.length){
+                ans.add(num);   
+                System.out.println(num + " " + count.get(num));
+            }
+        }
+        Collections.sort(ans);
+
+        return ans;
     }
 }
