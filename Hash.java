@@ -196,4 +196,50 @@ public class Hash
 
         return ans;
     }
+    
+    //  [[2,3],[1,3],[5,4],[6,4]]
+    //  [[1,3],[2,3],[3,6],[5,6],[5,7],[4,5],[4,8],[4,9],[10,4],[10,9]]
+    public List<List<Integer>> findWinners(int[][] matches) {
+        List<List<Integer>> list = new ArrayList<>();
+        Set<Integer> notlost = new HashSet<Integer>();
+        
+        List<Integer> notlostlist = new ArrayList<Integer>();
+        List<Integer> onematch = new ArrayList<Integer>();
+        
+        // Add all losers to a hashmap
+        Map<Integer, Integer> losers = new HashMap<>();
+        for (int i = 0; i < matches.length; i++){
+            losers.put(matches[i][1], losers.getOrDefault(matches[i][1],0) + 1);
+        }
+        
+        // If winners are not in the losers hashmap add to array
+        for (int i = 0; i < matches.length; i++){
+            if (!losers.containsKey(matches[i][0])){
+                //System.out.println(matches[i][0]);
+                notlost.add(matches[i][0]);
+            }
+        }
+
+        for (int loser: losers.keySet()){
+           // System.out.println(loser + " " + losers.get(loser));
+            if (losers.get(loser) == 1){
+                onematch.add(loser);
+            }
+        }
+        
+        for (int winner: notlost){
+            notlostlist.add(winner);
+        }
+        
+        
+        Collections.sort(notlostlist);
+        Collections.sort(onematch);
+        
+            
+        // check the losers hasmap for 1 and add to array
+        list.add(notlostlist);
+        list.add(onematch);
+        
+        return list;
+    }
 }
