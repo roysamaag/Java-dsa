@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+
 public class Hash
 {
     public static void main(String[] args) {
@@ -38,13 +39,14 @@ public class Hash
         // int[] nums = {1,1,3,3,5,5,7,7};
         // System.out.println(countElements(nums));
         
-        int[][] nums = {{3,1,2,4,5},{1,2,3,4},{3,4,5,6}};
+        // int[][] nums = {{3,1,2,4,5},{1,2,3,4},{3,4,5,6}};
+        // List<Integer> ans = Intersection(nums);
 
-        List<Integer> ans = Intersection(nums);
+        System.out.println(RansomeNote("aabccdd", "abcddd"));
 
     }
 
-    public static void TwoSum(int[] nums, int target){
+    public void TwoSum(int[] nums, int target){
         Map<Integer, Integer> hashMap = new HashMap<>();
         
         for (int i = 0; i < nums.length; i++){
@@ -64,7 +66,7 @@ public class Hash
 
     }
 
-    public static int[] TwoSum1(int[] nums, int target){
+    public int[] TwoSum1(int[] nums, int target){
         // hashMap
         Map<Integer, Integer> hashMap = new HashMap<>();
         
@@ -85,7 +87,7 @@ public class Hash
 
     }
 
-    public static int[] TwoSum2(int[] nums, int target){
+    public int[] TwoSum2(int[] nums, int target){
 
         // Create hashMap
         Map<Integer, Integer> hashMap = new HashMap<>();
@@ -104,7 +106,7 @@ public class Hash
         return new int[] {-1, -1};
     }
 
-    public static char FirstCharacterToAppearTwice(String s){
+    public char FirstCharacterToAppearTwice(String s){
 
         // Create a HashMap
         Map<Character, Integer> hashMap = new HashMap<>();
@@ -123,7 +125,7 @@ public class Hash
         return ' ';
     }
 
-    public static char FirstCharacterToAppearTwice1(String s){
+    public char FirstCharacterToAppearTwice1(String s){
         // Create Set
         Set<Character> set = new HashSet<>();
         
@@ -140,7 +142,7 @@ public class Hash
         return ' ';
     }
 
-    public static boolean CheckIfSentenceIsPangram(String s){
+    public boolean CheckIfSentenceIsPangram(String s){
         // Create a Set and add each character
         Set<Character> seen = new HashSet<>();
 
@@ -151,7 +153,7 @@ public class Hash
         return seen.size() == 26;
     }
 
-    public static int countElements(int[] arr){
+    public int countElements(int[] arr){
 
         Set<Integer> set = new HashSet<>();
         
@@ -172,7 +174,7 @@ public class Hash
     //Intersection of Multiple Arrays
     //nums = [[3,1,2,4,5],[1,2,3,4],[3,4,5,6]]
     //output = [3,4]
-    public static List<Integer> Intersection(int[][] nums){
+    public List<Integer> Intersection(int[][] nums){
 
         // For every sub array
         // Add each number to a hashmap
@@ -241,5 +243,31 @@ public class Hash
         list.add(onematch);
         
         return list;
+    }
+
+    public static boolean RansomeNote(String magazine, String ransomeNote){
+
+        // Create a hashmap for magazine
+        Map<Character, Integer> magazineMap = new HashMap<>();
+
+        for (char c : magazine.toCharArray()){
+            magazineMap.put(c, magazineMap.getOrDefault(c, 0)+1);
+        }
+
+        // check if every letter in ransom note exists in hash map
+        // If exists reduce count by 1
+        // If it doesn't exist return false
+        for (char c : ransomeNote.toCharArray()){
+            int countInMagazine = magazineMap.getOrDefault(c, 0);
+            if (countInMagazine == 0){
+                return false;
+            }
+            else{
+                magazineMap.put(c,countInMagazine-1);
+            }
+        }
+
+
+        return true;
     }
 }
