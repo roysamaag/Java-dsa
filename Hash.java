@@ -247,6 +247,9 @@ public class Hash
 
     public static boolean RansomeNote(String magazine, String ransomeNote){
 
+        if (ransomeNote.length() > magazine.length())
+            return false;
+
         // Create a hashmap for magazine
         Map<Character, Integer> magazineMap = new HashMap<>();
 
