@@ -42,7 +42,19 @@ public class Hash
         // int[][] nums = {{3,1,2,4,5},{1,2,3,4},{3,4,5,6}};
         // List<Integer> ans = Intersection(nums);
 
-        System.out.println(RansomeNote("aabccdd", "abcddd"));
+        // System.out.println(RansomeNote("aabccdd", "abcddd"));
+         Map<String, Integer> map = new HashMap<>() ;
+        map.put("a", 9);
+        map.put("b", 10);
+        map.put("c", 10);
+        map.put("d", 10);
+        
+        
+        Map<String, Integer> ans = distributeSalary(40, map);
+        
+        for (String l : ans.keySet()){
+           System.out.println(ans.get(l));
+        }
 
     }
 
@@ -273,4 +285,33 @@ public class Hash
 
         return true;
     }
+    public static Map<String, Integer> distributeSalary(int amount, Map<String, Integer> limits) {
+        
+        // amount/limits.size
+        // map with the result for each person
+        // check limit and assign
+        // add the remaining to the amount
+        // divide the remaining by remaining people
+        
+        Map<String, Integer> distribute = new HashMap<>();
+        
+        int count = limits.size();
+        for (String limit : limits.keySet()){
+            int max = limits.getOrDefault(limit, 0);
+            
+            int amountPerson = Math.min(max,amount/count);
+            
+            //System.out.println(amountPerson);
+            
+            distribute.put(limit,amountPerson);
+            
+            amount -= amountPerson;
+            count--;
+        }
+        
+        
+        return distribute;
+    }
+
+
 }
